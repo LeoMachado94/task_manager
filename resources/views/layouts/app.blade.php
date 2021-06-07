@@ -16,8 +16,11 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/select/select2.min.css') }}">
+    @if (Route::getCurrentRoute() === 'dashboard')
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/charts/apexcharts.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/extensions/toastr.min.css') }}">
+    @endif
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -67,7 +70,6 @@
 @include('platform.partials.footer')
 <!-- END: Footer-->
 
-
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}"></script>
 <!-- BEGIN Vendor JS-->
@@ -89,7 +91,6 @@
 <script src="{{ asset('app-assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
 @endif
 <!-- END: Page JS-->
-
 <script>
     $(window).on('load', function() {
         if (feather) {
@@ -103,5 +104,4 @@
 @yield('scripts')
 </body>
 <!-- END: Body-->
-
 </html>

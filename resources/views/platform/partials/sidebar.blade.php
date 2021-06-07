@@ -13,7 +13,8 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Início</span><i data-feather="more-horizontal"></i></li>
-            <li class="nav-item @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'dashboard') active @endif"><a class="d-flex align-items-center" href="{{ route('dashboard') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboard">Dashboard</span></a></li>
+            <li class="nav-item @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'dashboard') active @endif"><a class="d-flex align-items-center" href="{{ route('dashboard') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboard">{{ __('menu.dashboard') }}</span></a></li>
+            <li class="nav-item @if(in_array(\Illuminate\Support\Facades\Route::currentRouteName(), ['tasks.index', 'tasks.create'])) active @endif"><a class="d-flex align-items-center" href="{{ route('tasks.index') }}"><i data-feather="paperclip"></i><span class="menu-title text-truncate" data-i18n="Dashboard">{{ __('menu.tasks.index') }}</span></a></li>
         </ul>
     </div>
 </div>

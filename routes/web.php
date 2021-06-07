@@ -20,11 +20,14 @@ Route::get('/', function () {
 //    return view('welcome');
 });
 
-Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+    Route::resource('tasks', \App\Http\Controllers\TasksController::class);
 
-/***
- * User Profile
- */
-Route::get('account/settings', [App\Http\Controllers\AccountsController::class, 'edit'])->name('account.settings');
-Route::put('account/settings', [App\Http\Controllers\AccountsController::class, 'update'])->name('account.settings.update');
+    /***
+     * User Profile
+     */
+    Route::get('account/settings', [App\Http\Controllers\AccountsController::class, 'edit'])->name('account.settings');
+    Route::put('account/settings', [App\Http\Controllers\AccountsController::class, 'update'])->name('account.settings.update');
+});
