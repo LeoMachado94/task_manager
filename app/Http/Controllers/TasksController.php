@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskStoreRequest;
+use App\Http\Requests\TaskUpdateRequest;
 use App\Models\Task;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class TasksController extends Controller
 {
@@ -36,5 +38,54 @@ class TasksController extends Controller
     {
         $task = Task::findOrFail($id);
         return view('platform.tasks.edit', compact('task'));
+    }
+
+    public function update(TaskUpdateRequest $request, $id)
+    {
+        $task = Task::findOrFail($id);
+        $data = $request->all();
+        $data['date'] = Carbon::createFromFormat('Y-m-d H:i:s', $data['date'].' '.$data['hour'].':00');
+        $task->update($data);
+        return redirect()->route('tasks.index');
+    }
+
+    public function destroy($id)
+    {
+        try {
+            Task::findOrFail($id)->delete();
+            return response()->json([
+                'success' => true,
+                'message' => __('global.messages.removed')
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    public function getTasks()
+    {
+        $data = Task::all();
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function($row) {
+                return implode('', [
+                    $this->mountEditBtn($row->id), $this->mountDeleteBtn($row->id)
+                ]);
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+    }
+
+    public function mountEditBtn($id)
+    {
+        return '<a href="'.route('tasks.edit', $id).'" class="btn-edit"><i data-feather="edit"></i></a>';
+    }
+
+    public function mountDeleteBtn($id)
+    {
+        return '<a href="#" class="btn-delete text-danger" data-id="'.$id.'"><i data-feather="trash"></i></a>';
     }
 }

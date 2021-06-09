@@ -23,6 +23,8 @@
     @endif
     <!-- END: Vendor CSS-->
 
+    @yield('styles-high')
+
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap-extended.css') }}">
@@ -42,6 +44,7 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     @yield('styles')
+    @livewireStyles
     <!-- END: Custom CSS-->
 </head>
 <!-- END: Head-->
@@ -81,6 +84,8 @@
 <script src="{{ asset('app-assets/vendors/js/extensions/toastr.min.js') }}"></script>
 <!-- END: Page Vendor JS-->
 
+@yield('scripts-high')
+
 <!-- BEGIN: Theme JS-->
 <script src="{{ asset('app-assets/js/core/app-menu.js') }}"></script>
 <script src="{{ asset('app-assets/js/core/app.js') }}"></script>
@@ -102,6 +107,7 @@
     })
 </script>
 @yield('scripts')
+@livewireScripts
 </body>
 <!-- END: Body-->
 </html>

@@ -30,4 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
      */
     Route::get('account/settings', [App\Http\Controllers\AccountsController::class, 'edit'])->name('account.settings');
     Route::put('account/settings', [App\Http\Controllers\AccountsController::class, 'update'])->name('account.settings.update');
+
+    // Datatables
+    Route::get('ajax/tasks', [App\Http\Controllers\TasksController::class, 'getTasks'])->name('ajax.getTasks');
+
 });

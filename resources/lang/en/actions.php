@@ -4,13 +4,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Pages Tasks Texts
+    | Actions Translations
     |--------------------------------------------------------------------------
     */
-    'index' => [
-        'title' => 'Tasks',
+    'dashboard' => [
     ],
-    'create' => [
-        'title' => 'Add New Task'
+    'tasks' => [
+        'add'    => 'Add Task',
+        'edit'   => 'Edit Task',
+        'delete' => 'Remove Task'
     ]
 ];

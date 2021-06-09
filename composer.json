@@ -12,7 +12,9 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "spatie/laravel-sluggable": "^2.6"
+        "livewire/livewire": "^2.4",
+        "spatie/laravel-sluggable": "^2.6",
+        "yajra/laravel-datatables-oracle": "^9.18"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
