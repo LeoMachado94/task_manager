@@ -129,10 +129,11 @@
                     "_method": "DELETE",
                     "_token": "{{ csrf_token() }}",
                 }).then(function (response) {
-                    console.log(response);
-                    table.draw();
+                    // CURRENT PAGE
+                    // table.page.info().page
+                    table.draw(false);
                 }).catch(function (error) {
-                    console.log(error);
+                    table.draw(false);
                 })
             });
         });
