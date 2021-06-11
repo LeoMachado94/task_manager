@@ -106,8 +106,9 @@
         }
     })
 </script>
-@yield('scripts')
+
 @livewireScripts
+@yield('scripts')
 </body>
 <!-- END: Body-->
 </html>

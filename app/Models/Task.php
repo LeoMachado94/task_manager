@@ -15,7 +15,8 @@ class Task extends Model
     ];
 
     protected $appends = [
-        'hour'
+        'hour',
+        'date_full'
     ];
 
     public function getDateAttribute($value)
@@ -27,4 +28,34 @@ class Task extends Model
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['date'])->format('H:i');
     }
+
+    public function getDateFullAttribute()
+    {
+        return $this->attributes['date'];
+    }
+
+    public function getDescriptionAbbr()
+    {
+        if(!empty($this->description) && strlen($this->description) > 150) {
+            return substr($this->description, 0, 150).'...';
+        }
+        return $this->description;
+    }
+
+    public function getTitleAbbr()
+    {
+        if(!empty($this->title) && strlen($this->title) > 30) {
+            return substr($this->title, 0, 30).'...';
+        }
+        return $this->title;
+    }
+
+    public function delayed()
+    {
+        if (Carbon::now()->format('Y-m-d H:i:s') > $this->date_full) {
+            return true;
+        }
+        return false;
+    }
+
 }
