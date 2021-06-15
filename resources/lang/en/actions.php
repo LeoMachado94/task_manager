@@ -10,8 +10,10 @@ return [
     'dashboard' => [
     ],
     'tasks' => [
-        'add'    => 'Add Task',
-        'edit'   => 'Edit Task',
-        'delete' => 'Remove Task'
+        'add'      => 'Add',
+        'edit'     => 'Edit',
+        'show'     => 'Info',
+        'delete'   => 'Remove',
+        'finished' => 'Finished'
     ]
 ];

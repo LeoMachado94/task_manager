@@ -42,9 +42,9 @@
                                             <div class="col-6 form-group">
                                                 <label for="status">{{ __('entities/task.status') }}</label>
                                                 <select type="text" id="status" class="select2 form-control" name="status">
-                                                    <option value="1" {{ $task->status == 1 ? 'selected' : '' }})>One</option>
-                                                    <option value="2" {{ $task->status == 2 ? 'selected' : '' }}>Two</option>
-                                                    <option value="3" {{ $task->status == 3 ? 'selected' : '' }}>Three</option>
+                                                    @foreach(\App\Models\Task::$STATUS as $k => $v)
+                                                        <option value="{{ $k }}" @if($task->status === $k) selected @endif>{{ $v }}</option>
+                                                    @endforeach
                                                 </select>
                                                 @error('status')
                                                 <span class="text-danger small">{{ $message }}</span>

@@ -9,7 +9,7 @@
         <li class="scrollable-container media-list"><a class="d-flex" href="javascript:void(0)">
                 <div class="media d-flex align-items-start">
                     <div class="media-left">
-                        <div class="avatar"><img src="app-assets/images/portrait/small/avatar-s-15.jpg" alt="avatar" width="32" height="32"></div>
+                        <div class="avatar"><img src="{{ asset('app-assets/images/portrait/small/avatar-s-15.jpg') }}" alt="avatar" width="32" height="32"></div>
                     </div>
                     <div class="media-body">
                         <p class="media-heading"><span class="font-weight-bolder">Congratulation Sam 🎉</span>winner!</p><small class="notification-text"> Won the monthly best seller badge.</small>
@@ -18,7 +18,7 @@
             </a><a class="d-flex" href="javascript:void(0)">
                 <div class="media d-flex align-items-start">
                     <div class="media-left">
-                        <div class="avatar"><img src="app-assets/images/portrait/small/avatar-s-3.jpg" alt="avatar" width="32" height="32"></div>
+                        <div class="avatar"><img src="{{ asset('app-assets/images/portrait/small/avatar-s-3.jpg') }}" alt="avatar" width="32" height="32"></div>
                     </div>
                     <div class="media-body">
                         <p class="media-heading"><span class="font-weight-bolder">New message</span>&nbsp;received</p><small class="notification-text"> You have 10 unread messages</small>

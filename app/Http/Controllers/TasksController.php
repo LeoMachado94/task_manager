@@ -40,6 +40,12 @@ class TasksController extends Controller
         return view('platform.tasks.edit', compact('task'));
     }
 
+    public function show($id)
+    {
+        $task = Task::findOrFail($id);
+        return view('platform.tasks.show', compact('task'));
+    }
+
     public function update(TaskUpdateRequest $request, $id)
     {
         $task = Task::findOrFail($id);

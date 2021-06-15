@@ -10,8 +10,18 @@ class Task extends Model
 {
     use HasFactory;
 
+    public static $TASK_STATUS_PENDING     = 1;
+    public static $TASK_STATUS_IN_PROGRESS = 2;
+    public static $TASK_STATUS_FINISHED    = 3;
+    public static $STATUS = [
+        1 => 'Pending',
+        2 => 'In progress',
+        3 => 'Finished',
+        4 => 'Canceled'
+    ];
+
     protected $fillable = [
-        'title', 'description', 'date', 'status', 'overdue_completion'
+        'reporter_id', 'user_id', 'title', 'description', 'date', 'status', 'overdue_completion'
     ];
 
     protected $appends = [

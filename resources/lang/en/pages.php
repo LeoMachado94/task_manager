@@ -14,5 +14,6 @@ return [
         'index'  => ['title' => 'Tasks'],
         'create' => ['title' => 'Add New Task'],
         'edit'   => ['title' => 'Edit Task'],
+        'show'   => ['title' => 'Task Info']
     ]
 ];

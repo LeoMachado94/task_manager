@@ -73,6 +73,7 @@
 @include('platform.partials.footer')
 <!-- END: Footer-->
 
+@livewireScripts
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}"></script>
 <!-- BEGIN Vendor JS-->
@@ -104,10 +105,17 @@
                 height: 14
             });
         }
-    })
+    });
+
+    // Reload icons
+    Livewire.hook('element.updating', (fromEl, toEl, component) => {
+        feather.replace({
+            width: 14,
+            height: 14
+        });
+    });
 </script>
 
-@livewireScripts
 @yield('scripts')
 </body>
 <!-- END: Body-->

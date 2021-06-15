@@ -13,8 +13,8 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $roles = [
-        1   => 'Usuário',
-        2   => 'Advogado',
+        1   => 'Colaborador',
+        98   => 'Administrador',
         99  => 'Super Administrador'
     ];
 
@@ -61,22 +61,6 @@ class User extends Authenticatable
     public function address()
     {
         return $this->hasMany(UserAddress::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function socialLink()
-    {
-        return $this->hasOne(UserSocialLink::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function university()
-    {
-        return $this->hasOne(UserUniversity::class);
     }
 
     /**

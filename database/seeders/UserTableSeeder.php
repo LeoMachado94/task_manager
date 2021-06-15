@@ -31,11 +31,35 @@ class UserTableSeeder extends Seeder
         $user2->address()->create();
 
         $user3 = User::create([
+            'name' => 'Adm Tm 1',
+            'email' => 'adm1@taskmanager.com',
+            'password' => bcrypt('Adm12345'),
+            'level_access' => 98,
+        ]);
+        $user3->address()->create();
+
+        $user4 = User::create([
+            'name' => 'Adm Tm 2',
+            'email' => 'adm2@taskmanager.com',
+            'password' => bcrypt('Adm12345'),
+            'level_access' => 98,
+        ]);
+        $user4->address()->create();
+
+        $user5 = User::create([
             'name' => 'User Tm',
             'email' => 'user@taskmanager.com',
             'password' => bcrypt('User12345'),
             'level_access' => 1,
         ]);
-        $user3->address()->create();
+        $user5->address()->create();
+
+        $user6 = User::create([
+            'name' => 'User Tm',
+            'email' => 'user2@taskmanager.com',
+            'password' => bcrypt('User12345'),
+            'level_access' => 1,
+        ]);
+        $user6->address()->create();
     }
 }

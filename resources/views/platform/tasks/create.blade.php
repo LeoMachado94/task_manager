@@ -41,9 +41,9 @@
                                             <div class="col-6 form-group">
                                                 <label for="status">{{ __('entities/task.status') }}</label>
                                                 <select type="text" id="status" class="select2 form-control" name="status">
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    @foreach(\App\Models\Task::$STATUS as $k => $v)
+                                                    <option value="{{ $k }}">{{ $v }}</option>
+                                                    @endforeach
                                                 </select>
                                                 @error('status')
                                                 <span class="text-danger small">{{ $message }}</span>
