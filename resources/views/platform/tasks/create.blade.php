@@ -30,6 +30,7 @@
                                 <div class="card-body">
                                     <form class="form form-horizontal form-task" action="{{ route('tasks.store') }}" enctype="multipart/form-data" method="post">
                                         @csrf
+                                        <input type="hidden" name="reporter_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}">
                                         <div class="row">
                                             <div class="col-12 form-group">
                                                 <label for="title">{{ __('entities/task.user') }}</label>

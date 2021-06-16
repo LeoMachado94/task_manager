@@ -31,7 +31,6 @@
                                     <form class="form form-horizontal form-user" action="{{ route('users.store') }}" enctype="multipart/form-data" method="post">
                                         @csrf
                                         <div class="row">
-                                            <input type="hidden" name="reporter_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}">
                                             <div class="col-6 form-group">
                                                 <label for="title">{{ __('entities/user.name') }}</label>
                                                 <input type="text" id="name" class="form-control" name="name" placeholder="{{ __('entities/user.name') }}">

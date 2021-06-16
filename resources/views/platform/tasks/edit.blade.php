@@ -31,6 +31,7 @@
                                     <form class="form form-horizontal form-task" action="{{ route('tasks.update', $task->id) }}" enctype="multipart/form-data" method="post">
                                         @method('PUT')
                                         @csrf
+                                        <input type="hidden" name="reporter_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}">
                                         <div class="row">
                                             <div class="col-6 form-group">
                                                 <label for="title">{{ __('entities/task.title') }}</label>
