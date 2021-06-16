@@ -31,6 +31,7 @@
                                     <form class="form form-horizontal form-user" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data" method="post">
                                         @method('PUT')
                                         @csrf
+                                        <input type="hidden" name="reporter_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}">
                                         <div class="row">
                                             <div class="col-6 form-group">
                                                 <label for="title">{{ __('entities/user.name') }}</label>
