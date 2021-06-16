@@ -52,24 +52,13 @@ class DashboardTasks extends Component
         $user = Auth::user();
 
         if ($user->isSuperAdmin()) {
-            if ($this->assignedTo === 'me') {
-                $tasks = Task::where('user_id', $user->id)
-                    ->whereDate('date', date('Y-m-d'))
-                    ->where('status', '!=', Task::$TASK_STATUS_FINISHED)->paginate($this->perPage);
-            } else {
-                $tasks = Task::whereDate('date', date('Y-m-d'))
-                    ->where('status', '!=', Task::$TASK_STATUS_FINISHED)->paginate($this->perPage);
-            }
+            $tasks = Task::where('user_id', $user->id)
+                ->whereDate('date', date('Y-m-d'))
+                ->where('status', '!=', Task::$TASK_STATUS_FINISHED)->paginate($this->perPage);
         } else if ($user->isAdmin()) {
-            if ($this->assignedTo === 'me') {
-                $tasks = Task::where('user_id', $user->id)
-                    ->whereDate('date', date('Y-m-d'))
-                    ->where('status', '!=', Task::$TASK_STATUS_FINISHED)->paginate($this->perPage);
-            } else {
-                $tasks = Task::where('reporter_id', $user->id)
-                    ->whereDate('date', date('Y-m-d'))
-                    ->where('status', '!=', Task::$TASK_STATUS_FINISHED)->paginate($this->perPage);
-            }
+            $tasks = Task::where('user_id', $user->id)
+                ->whereDate('date', date('Y-m-d'))
+                ->where('status', '!=', Task::$TASK_STATUS_FINISHED)->paginate($this->perPage);
         } else {
             $tasks = Task::where('user_id', $user->id)
                 ->whereDate('date', date('Y-m-d'))
