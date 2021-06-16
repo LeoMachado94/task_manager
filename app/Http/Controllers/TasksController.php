@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskStoreRequest;
 use App\Http\Requests\TaskUpdateRequest;
 use App\Models\Task;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 class TasksController extends Controller
@@ -23,7 +25,13 @@ class TasksController extends Controller
 
     public function create()
     {
-        return view('platform.tasks.create');
+        if (Auth::user()->isSuperAdmin()) {
+            $users = User::all();
+        } else {
+            $users = User::where('level_access', '!=', 99)->get();
+        }
+
+        return view('platform.tasks.create', compact('users'));
     }
 
     public function store(TaskStoreRequest $request)

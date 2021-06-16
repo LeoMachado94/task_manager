@@ -7,6 +7,8 @@ return [
     | Task Model Attributes
     |--------------------------------------------------------------------------
     */
+    'reporter' => 'Reporter',
+    'user' => 'Responsible',
     'title' => 'Title',
     'description' => 'Description',
     'date' => 'Date',

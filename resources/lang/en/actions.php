@@ -9,11 +9,18 @@ return [
     */
     'dashboard' => [
     ],
+    'add'      => 'Add',
+    'edit'     => 'Edit',
+    'show'     => 'Info',
+    'delete'   => 'Remove',
+    'finished' => 'Finished',
+    /*
+    |--------------------------------------------------------------------------
+    | Actions Tasks Translations
+    |--------------------------------------------------------------------------
+    */
     'tasks' => [
-        'add'      => 'Add',
-        'edit'     => 'Edit',
-        'show'     => 'Info',
-        'delete'   => 'Remove',
-        'finished' => 'Finished'
+        'show-my-tasks'  => 'My Tasks',
+        'show-users-tasks' => 'Users Tasks',
     ]
 ];

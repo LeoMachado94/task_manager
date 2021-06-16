@@ -8,12 +8,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">{{ __('pages.tasks.create.title') }}</h2>
+                            <h2 class="content-header-title float-left mb-0">{{ __('pages.tasks.edit.title') }}</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('menu.dashboard') }}</a>
                                     </li>
-                                    <li class="breadcrumb-item active"><a href="{{ route('tasks.create') }}">{{ __('pages.tasks.create.title') }}</a>
+                                    <li class="breadcrumb-item active"><a href="{{ route('tasks.create') }}">{{ __('pages.tasks.edit.title') }}</a>
                                     </li>
                                 </ol>
                             </div>
@@ -28,56 +28,39 @@
                         <div class="col-md-12 col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="form form-horizontal form-task" action="{{ route('tasks.store') }}" enctype="multipart/form-data" method="post">
+                                    <form class="form form-horizontal form-user" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data" method="post">
+                                        @method('PUT')
                                         @csrf
                                         <div class="row">
-                                            <div class="col-12 form-group">
-                                                <label for="title">{{ __('entities/task.user') }}</label>
-                                                <select type="text" id="user_id" class="select2 form-control" name="user_id">
-                                                    @foreach($users as $user)
-                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('user_id')
-                                                <span class="text-danger small">{{ $message }}</span>
-                                                @enderror
-                                            </div>
                                             <div class="col-6 form-group">
-                                                <label for="title">{{ __('entities/task.title') }}</label>
-                                                <input type="text" id="title" class="form-control" name="title" placeholder="{{ __('entities/task.title') }}" />
-                                                @error('title')
+                                                <label for="title">{{ __('entities/user.name') }}</label>
+                                                <input type="text" id="name" class="form-control" name="name" placeholder="{{ __('entities/user.name') }}" value="{{ $user->name }}">
+                                                @error('name')
                                                     <span class="text-danger small">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                             <div class="col-6 form-group">
-                                                <label for="status">{{ __('entities/task.status') }}</label>
-                                                <select type="text" id="status" class="select2 form-control" name="status">
-                                                    @foreach(\App\Models\Task::$STATUS as $k => $v)
-                                                    <option value="{{ $k }}">{{ $v }}</option>
-                                                    @endforeach
+                                                <label for="status">{{ __('entities/user.level_access') }}</label>
+                                                <select type="text" id="level_access" class="select2 form-control" name="level_access">
+                                                    <option value="{{ \App\Models\User::$ROLE_COLLABORATOR }}" @if($user->level_access === \App\Models\User::$ROLE_COLLABORATOR) selected @endif>Collaborator</option>
+                                                    <option value="{{ \App\Models\User::$ROLE_ADMINISTRATOR }}" @if($user->level_access === \App\Models\User::$ROLE_ADMINISTRATOR) selected @endif>Administrator</option>
+                                                    <option value="{{ \App\Models\User::$ROLE_SUPER_ADMINISTRATOR }}" @if($user->level_access === \App\Models\User::$ROLE_SUPER_ADMINISTRATOR) selected @endif>Super Administrator</option>
                                                 </select>
                                                 @error('status')
                                                 <span class="text-danger small">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                             <div class="col-6 form-group">
-                                                <label for="date">{{ __('entities/task.date') }}</label>
-                                                <input type="date" id="date" class="form-control" name="date" placeholder="{{ __('entities/task.date') }}" />
-                                                @error('date')
-                                                    <span class="text-danger small">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                            <div class="col-6 form-group">
-                                                <label for="hour">{{ __('entities/task.date') }}</label>
-                                                <input type="time" id="hour" class="form-control" name="hour" placeholder="{{ __('entities/task.date') }}" />
-                                                @error('hour')
+                                                <label for="title">{{ __('entities/user.email') }}</label>
+                                                <input type="text" id="email" class="form-control" name="email" placeholder="{{ __('entities/user.email') }}" value="{{ $user->email }}">
+                                                @error('email')
                                                 <span class="text-danger small">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="col-12 form-group">
-                                                <label for="description">{{ __('entities/task.description') }}</label>
-                                                <textarea id="description" class="form-control" name="description" placeholder="{{ __('entities/task.description') }}"></textarea>
-                                                @error('description')
+                                            <div class="col-6 form-group">
+                                                <label for="title">{{ __('entities/user.password') }}</label>
+                                                <input type="password" id="password" class="form-control" name="password" placeholder="{{ __('entities/user.password') }}" value="">
+                                                @error('password')
                                                 <span class="text-danger small">{{ $message }}</span>
                                                 @enderror
                                             </div>

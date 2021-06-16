@@ -29,6 +29,14 @@ class Task extends Model
         'date_full'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function getDateAttribute($value)
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');

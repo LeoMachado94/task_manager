@@ -4,10 +4,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Menus Items
+    | User Model Attributes
     |--------------------------------------------------------------------------
     */
-    'dashboard' => 'Dashboard',
-    'tasks' => 'Tasks',
-    'users' => 'Users'
+    'name' => 'Name',
+    'email' => 'Email',
+    'password' => 'Password',
+    'level_access' => 'Level Access',
 ];

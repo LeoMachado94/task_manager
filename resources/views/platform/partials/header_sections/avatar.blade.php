@@ -9,7 +9,7 @@
         </span>
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-        <a class="dropdown-item" href="{{ route('account.settings') }}"><i class="mr-50" data-feather="user"></i> Perfil</a>
+        <a class="dropdown-item" href="{{ route('account.settings') }}"><i class="mr-50" data-feather="user"></i> Profile</a>
 {{--        <a class="dropdown-item" href="app-email.html"><i class="mr-50" data-feather="mail"></i> Inbox--}}
 {{--        </a><a class="dropdown-item" href="app-todo.html"><i class="mr-50" data-feather="check-square"></i> Task</a>--}}
 {{--        <a class="dropdown-item" href="app-chat.html"><i class="mr-50" data-feather="message-square"></i> Chats</a>--}}

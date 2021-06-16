@@ -21,22 +21,23 @@
             @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
                 <div class="col-lg-4 col-md-6 col-12 text-right">
                     <a href="{{ route('tasks.create') }}" class="btn btn-sm btn-outline-primary">
-                        <i data-feather="plus"></i> {{ __('menu.tasks.create') }}
+                        <i data-feather="plus"></i> {{ __('pages.tasks.create.title') }}
                     </a>
                     @if($assignedTo !== 'me')
-                    <a href="#" class="btn btn-sm btn-outline-secondary" wire:click="setAssignedTo('me')">
-                        <i data-feather="paperclip"></i> My Tasks
-                    </a>
+                    <button class="btn btn-sm btn-outline-secondary" wire:click="setAssignedTo('me')">
+                        <i data-feather="paperclip"></i> {{ __('actions.tasks.show-my-tasks') }}
+                    </button>
                     @else
-                    <a href="#" class="btn btn-sm btn-outline-secondary" wire:click="setAssignedTo('null')">
-                        <i data-feather="paperclip"></i> Users Tasks
-                    </a>
+                    <button class="btn btn-sm btn-outline-secondary" wire:click="setAssignedTo('null')">
+                        <i data-feather="paperclip"></i> {{ __('actions.tasks.show-users-tasks') }}
+                    </button>
                     @endif
                 </div>
             @endif
         </div>
         <div class="content-detached content-left">
-            <div class="content-body" style="margin-right: 0">
+            @if(!$tasks->isEmpty())
+                <div class="content-body" style="margin-right: 0">
                 <div class="row">
                 @foreach($tasks as $task)
                     <div class="col-lg-4 col-md-6 col-sm-6">
@@ -47,15 +48,16 @@
                                 </h4>
                                 <p class="card-text" style="max-height: 125px; overflow: hidden;">{{ $task->getDescriptionAbbr() }}</p>
                                 <p><strong>Prazo:</strong> {{ $task->date }} - {{ $task->hour }}</p>
+                                <p><strong>Responsible:</strong> {{ $task->user->name }}</p>
                                 <div>
                                     <a class="btn btn-primary btn-sm" href="{{ route('tasks.show', $task->id) }}">
-                                        <i data-feather="eye"></i> {{ __('actions.tasks.show') }}
+                                        <i data-feather="eye"></i> {{ __('actions.show') }}
                                     </a>
                                     <button class="btn btn-success btn-sm" wire:click="finished({{ $task->id }})">
-                                        <i data-feather="check"></i> {{ __('actions.tasks.finished') }}
+                                        <i data-feather="check"></i> {{ __('actions.finished') }}
                                     </button>
                                     <button class="btn btn-danger btn-sm" wire:click="delete({{ $task->id }})">
-                                        <i data-feather="trash"></i> {{ __('actions.tasks.delete') }}
+                                        <i data-feather="trash"></i> {{ __('actions.delete') }}
                                     </button>
                                 </div>
                             </div>
@@ -67,6 +69,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

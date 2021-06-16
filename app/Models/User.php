@@ -12,9 +12,13 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public static $ROLE_COLLABORATOR        = 1;
+    public static $ROLE_ADMINISTRATOR       = 98;
+    public static $ROLE_SUPER_ADMINISTRATOR = 99;
+
     protected $roles = [
-        1   => 'Colaborador',
-        98   => 'Administrador',
+        1   => 'Collaborator',
+        98  => 'Administrador',
         99  => 'Super Administrador'
     ];
 

@@ -107,13 +107,28 @@
         }
     });
 
-    // Reload icons
-    Livewire.hook('element.updating', (fromEl, toEl, component) => {
-        feather.replace({
-            width: 14,
-            height: 14
+    document.addEventListener("DOMContentLoaded", () => {
+        // Livewire.hook('element.updating', (fromEl, toEl, component) => {
+        //     console.log('updating');
+        // });
+        // Livewire.hook('element.updated', (el, component) => {
+        //     console.log('updated');
+        // });
+        // Reload icons
+        Livewire.hook('element.initialized', (el, component) => {
+            console.log('element initialized');
+            feather.replace({
+                width: 14,
+                height: 14
+            });
         });
+        Livewire.hook('component.initialized', (component) => {
+            console.log('iniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatialized');
+        })
     });
+
+    // Reload icons
+
 </script>
 
 @yield('scripts')

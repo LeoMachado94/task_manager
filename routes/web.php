@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
     Route::resource('tasks', \App\Http\Controllers\TasksController::class);
+    Route::resource('users', \App\Http\Controllers\UsersController::class);
 
     /***
      * User Profile
