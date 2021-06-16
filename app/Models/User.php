@@ -108,6 +108,11 @@ class User extends Authenticatable
         return $value;
     }
 
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
     public function isAdmin()
     {
         if ($this->level_access === 98) {
