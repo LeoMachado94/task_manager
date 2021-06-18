@@ -17,13 +17,13 @@ class UserInitialTableSeeder extends Seeder
         $adm = User::create([
             'name' => 'Thales Meachado',
             'email' => 'thalesmmengue@gmail.com',
-            'password' => bcrypt('Thales99'),
+            'password' => 'Thales99',
             'level_access' => 99,
         ]);
         $user1 = User::create([
             'name' => 'Silvana Guimarães',
             'email' => 'guimaraes_silvana@yahoo.com.br',
-            'password' => bcrypt('Senha12345'),
+            'password' => 'Senha12345',
             'level_access' => 98,
         ]);
         $user1->address()->create();
@@ -31,7 +31,7 @@ class UserInitialTableSeeder extends Seeder
         $user2 = User::create([
             'name' => 'Monica Matos',
             'email' => 'monicamatosbarbaosa@gmail.com',
-            'password' => bcrypt('Senha12345'),
+            'password' => 'Senha12345',
             'level_access' => 98,
         ]);
         $user2->address()->create();

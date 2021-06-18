@@ -81,10 +81,6 @@ class AccountsController extends Controller
                         $data['avatar'] = 'storage/users/avatars/'.$fileName;
                     }
                 }
-
-                if ($request->input('tab') === 'security') {
-                    $data['password'] = bcrypt($data['password']);
-                }
             }
 
             $user->update($data);
