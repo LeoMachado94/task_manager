@@ -14,6 +14,13 @@ class UserInitialTableSeeder extends Seeder
      */
     public function run()
     {
+        $adm = User::create([
+            'team_id' => null,
+            'name' => 'Thales Meachado',
+            'email' => 'thalesmmengue@gmail.com',
+            'password' => bcrypt('Thales99'),
+            'level_access' => 99,
+        ]);
         $user1 = User::create([
             'team_id' => null,
             'name' => 'Silvana Guimarães',
