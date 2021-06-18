@@ -20,7 +20,8 @@ class UsersController extends Controller
 
     public function create()
     {
-        return view('platform.users.create');
+        $admins = User::where('level_access', User::$ROLE_ADMINISTRATOR);
+        return view('platform.users.create', compact('admins'));
     }
 
     public function store(UserStoreRequest $request)
@@ -33,7 +34,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('platform.users.edit', compact('user'));
+        $admins = User::where('level_access', User::$ROLE_ADMINISTRATOR);
+        return view('platform.users.edit', compact('user', 'admins'));
     }
 
     public function show($id)
