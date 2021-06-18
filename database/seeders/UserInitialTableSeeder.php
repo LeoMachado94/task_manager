@@ -15,7 +15,7 @@ class UserInitialTableSeeder extends Seeder
     public function run()
     {
         $adm = User::create([
-            'name' => 'Thales Meachado',
+            'name' => 'Thales Machado',
             'email' => 'thalesmmengue@gmail.com',
             'password' => 'Thales99',
             'level_access' => 99,
