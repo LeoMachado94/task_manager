@@ -25,12 +25,20 @@ class UsersList extends Component
     public function render()
     {
         return view('livewire.users-list', [
-            'users' => User::paginate($this->perPage)
+            'users' => $this->getUsersByRole()
         ]);
     }
 
     public function delete($id)
     {
         User::findOrFail($id)->delete();
+    }
+
+    public function getUsersByRole()
+    {
+        if (Auth::user()->isSuperAdmin()) {
+            return User::paginate($this->perPage);
+        }
+        return User::where('responsible_id', Auth::user()->id)->paginate($this->perPage);
     }
 }
