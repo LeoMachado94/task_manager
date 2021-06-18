@@ -39,7 +39,7 @@ class TasksController extends Controller
         $data = $request->all();
         $data['date'] = Carbon::createFromFormat('Y-m-d H:i:s', $data['date'].' '.$data['hour'].':00');
         Task::create($data);
-        return back();
+        return redirect()->route('tasks.index')->with('message', 'Tarefa cadastrada com sucesso!');
     }
 
     public function edit($id)
@@ -60,7 +60,7 @@ class TasksController extends Controller
         $data = $request->all();
         $data['date'] = Carbon::createFromFormat('Y-m-d H:i:s', $data['date'].' '.$data['hour'].':00');
         $task->update($data);
-        return redirect()->route('tasks.index');
+        return redirect()->route('tasks.index')->with('message', 'Tarefa atualizada com sucesso!');
     }
 
     public function destroy($id)

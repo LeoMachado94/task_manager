@@ -6,13 +6,13 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-12 mb-2">
-                    <h2>Hello {{ Auth::user()->name }}, welcome again.</h2>
+                    <h2>Olá {{ Auth::user()->name }}, bem-vindo novamente.</h2>
                 </div>
             </div>
             <div class="content-body">
                 <section class="main-container" >
                     <div class="location" id="home">
-                        <h1 id="home">See today tasks...</h1>
+                        <h1 id="home">Veja as tarefas de hoje...</h1>
                         <livewire:dashboard-tasks></livewire:dashboard-tasks>
                     </div>
                 </section>

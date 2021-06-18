@@ -9,7 +9,7 @@
                     </h4>
                     <p class="card-text" style="max-height: 125px; overflow: hidden;">{{ $task->getDescriptionAbbr() }}</p>
                     <p><strong>Prazo:</strong> {{ $task->date }} - {{ $task->hour }}</p>
-                    <p><strong>Responsible:</strong> {{ $task->user->name }}</p>
+                    <p><strong>Responsável:</strong> {{ $task->user->name }}</p>
                     <div>
                         <a class="btn btn-primary btn-sm" href="{{ route('tasks.show', $task->id) }}">
                             <i data-feather="eye"></i> {{ __('actions.show') }}
@@ -34,7 +34,7 @@
         <div class="col-12">
             <div class="alert alert-primary" role="alert">
                 <div class="alert-body">
-                    Results not found
+                    Nenhuma tarefa cadastrada.
                 </div>
             </div>
         </div>

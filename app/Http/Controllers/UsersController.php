@@ -27,7 +27,7 @@ class UsersController extends Controller
     {
         $data = $request->all();
         User::create($data);
-        return redirect()->route('users.index')->with('message', 'User created with success!');
+        return redirect()->route('users.index')->with('message', 'Usuário cadastrado com sucesso!');
     }
 
     public function edit($id)
@@ -47,7 +47,7 @@ class UsersController extends Controller
         $task = User::findOrFail($id);
         $data = $request->all();
         $task->update($data);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('message', 'Usuário atualizado com sucesso!');
     }
 
     public function destroy($id)

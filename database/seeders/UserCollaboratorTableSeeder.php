@@ -17,6 +17,7 @@ class UserCollaboratorTableSeeder extends Seeder
         User::factory()
             ->count(50)
             ->create([
+                'responsible_id' => rand(1,3),
                 'level_access' => 1
             ]);
     }

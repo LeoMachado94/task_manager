@@ -42,9 +42,11 @@
                                             <div class="col-6 form-group">
                                                 <label for="status">{{ __('entities/user.level_access') }}</label>
                                                 <select type="text" id="level_access" class="select2 form-control" name="level_access">
-                                                    <option value="{{ \App\Models\User::$ROLE_COLLABORATOR }}" @if($user->level_access === \App\Models\User::$ROLE_COLLABORATOR) selected @endif>Collaborator</option>
-                                                    <option value="{{ \App\Models\User::$ROLE_ADMINISTRATOR }}" @if($user->level_access === \App\Models\User::$ROLE_ADMINISTRATOR) selected @endif>Administrator</option>
-                                                    <option value="{{ \App\Models\User::$ROLE_SUPER_ADMINISTRATOR }}" @if($user->level_access === \App\Models\User::$ROLE_SUPER_ADMINISTRATOR) selected @endif>Super Administrator</option>
+                                                    <option value="{{ \App\Models\User::$ROLE_COLLABORATOR }}" @if($user->level_access === \App\Models\User::$ROLE_COLLABORATOR) selected @endif>Colaborador</option>
+                                                    <option value="{{ \App\Models\User::$ROLE_ADMINISTRATOR }}" @if($user->level_access === \App\Models\User::$ROLE_ADMINISTRATOR) selected @endif>Administrador</option>
+                                                    @if(Auth::user()->isSuperAdmin())
+                                                    <option value="{{ \App\Models\User::$ROLE_SUPER_ADMINISTRATOR }}" @if($user->level_access === \App\Models\User::$ROLE_SUPER_ADMINISTRATOR) selected @endif>Super Administrador</option>
+                                                    @endif
                                                 </select>
                                                 @error('status')
                                                 <span class="text-danger small">{{ $message }}</span>
@@ -61,6 +63,17 @@
                                                 <label for="title">{{ __('entities/user.password') }}</label>
                                                 <input type="password" id="password" class="form-control" name="password" placeholder="{{ __('entities/user.password') }}" value="">
                                                 @error('password')
+                                                <span class="text-danger small">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-6 form-group">
+                                                <label for="status">{{ __('entities/user.responsible_id') }} <small>(Opcional se admin)</small></label>
+                                                <select type="text" id="responsible_id" class="select2 form-control" name="responsible_id">
+                                                    @foreach($admins as $admin)
+                                                        <option value="{{ $admin->id }}" @if(old('responsible_id') === $admin->id || $user->responsible->id === $admin->id) selected @endif>{{ $admin->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('responsible_id')
                                                 <span class="text-danger small">{{ $message }}</span>
                                                 @enderror
                                             </div>

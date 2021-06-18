@@ -13,11 +13,12 @@ class Task extends Model
     public static $TASK_STATUS_PENDING     = 1;
     public static $TASK_STATUS_IN_PROGRESS = 2;
     public static $TASK_STATUS_FINISHED    = 3;
+    public static $TASK_STATUS_CANCELLED   = 4;
     public static $STATUS = [
-        1 => 'Pending',
-        2 => 'In progress',
-        3 => 'Finished',
-        4 => 'Canceled'
+        1 => 'Pendente',
+//        2 => 'Em andamento',
+        3 => 'Finalizado',
+        4 => 'Cancelado'
     ];
 
     protected $fillable = [
