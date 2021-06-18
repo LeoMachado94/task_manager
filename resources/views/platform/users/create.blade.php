@@ -66,8 +66,9 @@
                                                 @enderror
                                             </div>
                                             <div class="col-6 form-group">
-                                                <label for="status">{{ __('entities/user.responsible_id') }} <small>(Opcional se admin)</small></label>
+                                                <label for="status">{{ __('entities/user.responsible_id') }} <small>(A qual time este usuário pertence? Opcional se Administrador ou Super Adm.)</small></label>
                                                 <select type="text" id="responsible_id" class="select2 form-control" name="responsible_id">
+                                                    <option value="">Nenhum</option>
                                                     @foreach($admins as $admin)
                                                     <option value="{{ $admin->id }}" @if(old('responsible_id') === $admin->id) selected @endif>{{ $admin->name }}</option>
                                                     @endforeach

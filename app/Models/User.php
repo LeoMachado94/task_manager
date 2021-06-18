@@ -17,7 +17,7 @@ class User extends Authenticatable
     public static $ROLE_SUPER_ADMINISTRATOR = 99;
 
     protected $roles = [
-        1   => 'Collaborator',
+        1   => 'Colaborador',
         98  => 'Administrador',
         99  => 'Super Administrador'
     ];
