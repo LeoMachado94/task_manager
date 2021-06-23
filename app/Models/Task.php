@@ -22,7 +22,8 @@ class Task extends Model
     ];
 
     protected $fillable = [
-        'reporter_id', 'user_id', 'title', 'description', 'date', 'status', 'overdue_completion'
+        'reporter_id', 'user_id', 'title', 'description', 'date', 'status', 'overdue_completion',
+        'report', 'report_sent_at'
     ];
 
     protected $appends = [

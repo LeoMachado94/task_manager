@@ -58,20 +58,79 @@
                         </div>
                     </div>
                 </section>
-                <!-- Basic Horizontal form layout section end -->
-
+                <!-- Report -->
+                @if (Auth::user()->id == $task->user_id)
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Enviar Relatório</h3>
+                            </div>
+                            <div class="card-body">
+                                @if(session()->has('message'))
+                                    <div class="alert alert-success p-1">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+                                <form name="form-report" id="form-report" action="{{ route('tasks.update', [$task->id, 'returnTo' => 'task-info']) }}" method="POST">
+                                    @method('PUT')
+                                    @csrf
+                                    <div class="row">
+                                        <textarea name="report" id="input-report" style="display: none;"></textarea>
+                                        <div class="col-md-12">
+                                            <div id="editor" style="min-height: 150px;">{!! $task->report !!}</div>
+                                        </div>
+                                        <div class="col-md-12 text-right mt-5">
+                                            <button type="submit" class="btn btn-success">Enviar relatório</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @else
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Relatório</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {!! $task->report !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>
 @endsection
 
 @section('styles')
-
+    <link rel="stylesheet" href="{{ asset('plugins/quill-editor/quill.min.css') }}">
 @endsection
 @section('scripts')
     <script src="{{ asset('app-assets/js/scripts/sweetalert/sweetalert.min.js') }}"></script>
     <!-- BEGIN: Page Vendor JS-->
-    <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
-    <!-- END: Page Vendor JS-->
-    <script src="{{ asset('app-assets/js/scripts/forms/form-select2.js') }}"></script>
+    <script src="{{ asset('plugins/quill-editor/quill.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            var quill = new Quill('#editor', {
+                placeholder: 'Digite seu relatório aqui...',
+                readOnly: false,
+                theme: 'snow'
+            });
+            quill.on('text-change', function(delta, oldDelta, source) {
+                console.log(quill.container.firstChild.innerHTML)
+                $('#input-report').val(quill.container.firstChild.innerHTML);
+            });
+        });
+    </script>
 @endsection

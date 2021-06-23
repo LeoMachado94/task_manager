@@ -49,6 +49,9 @@
                                     <a class="btn btn-primary btn-sm" href="{{ route('users.show', $user->id) }}">
                                         <i data-feather="eye"></i> {{ __('actions.show') }}
                                     </a>
+                                    <a class="btn btn-primary btn-sm" href="{{ route('users.edit', $user->id) }}">
+                                        <i data-feather="edit"></i> {{ __('actions.edit') }}
+                                    </a>
                                     <button class="btn btn-danger btn-sm" wire:click="delete({{ $user->id }})">
                                         <i data-feather="trash"></i> {{ __('actions.delete') }}
                                     </button>

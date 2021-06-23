@@ -26,16 +26,16 @@ class TaskUpdateRequest extends FormRequest
     {
         return [
             'title' => [
-                'required', 'string'
+                'required_without:report', 'string'
             ],
             'description' => [
-                'required', 'string'
+                'required_without:report', 'string'
             ],
             'date' => [
-                'required', 'date'
+                'required_without:report', 'date'
             ],
             'hour' => [
-                'required', 'date_format:H:i'
+                'required_without:report', 'date_format:H:i'
             ],
             'status' => [
                 'integer'

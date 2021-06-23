@@ -58,8 +58,19 @@ class TasksController extends Controller
     {
         $task = Task::findOrFail($id);
         $data = $request->all();
-        $data['date'] = Carbon::createFromFormat('Y-m-d H:i:s', $data['date'].' '.$data['hour'].':00');
+        if(!empty($data['date'])) {
+            $data['date'] = Carbon::createFromFormat('Y-m-d H:i:s', $data['date'].' '.$data['hour'].':00');
+        }
+
+        if ($request->query('returnTo') == 'task-info') {
+            $data['report_sent_at'] = Carbon::now()->format('Y-m-d H:i:s');
+        }
+
         $task->update($data);
+
+        if ($request->query('returnTo') == 'task-info') {
+            return redirect()->route('tasks.show', $id)->with('message', 'Relatório cadastrado com sucesso!');
+        }
         return redirect()->route('tasks.index')->with('message', 'Tarefa atualizada com sucesso!');
     }
 

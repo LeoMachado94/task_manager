@@ -71,7 +71,7 @@
                                                 <select type="text" id="responsible_id" class="select2 form-control" name="responsible_id">
                                                     <option value="">Nenhum</option>
                                                 @foreach($admins as $admin)
-                                                        <option value="{{ $admin->id }}" @if(old('responsible_id') === $admin->id || $user->responsible->id === $admin->id) selected @endif>{{ $admin->name }}</option>
+                                                        <option value="{{ $admin->id }}" @if(old('responsible_id') === $admin->id || $user->responsible_id === $admin->id) selected @endif>{{ $admin->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('responsible_id')
@@ -79,7 +79,7 @@
                                                 @enderror
                                             </div>
                                             <div class="col-12 form-group text-right">
-                                                <button type="submit" class="btn btn-primary mr-1">Cadastrar</button>
+                                                <button type="submit" class="btn btn-primary mr-1">Salvar</button>
                                                 <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                                             </div>
                                         </div>

@@ -39,6 +39,13 @@
             @if(!$tasks->isEmpty())
                 <div class="content-body" style="margin-right: 0">
                 <div class="row">
+                @if(session()->has('message'))
+                    <div class="col-lg-12 col-md-12">
+                        <div class="alert alert-success p-1">
+                            {{ session()->get('message') }}
+                        </div>
+                    </div>
+                @endif
                 @foreach($tasks as $task)
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="card shadow-none bg-transparent @if($task->delayed()) border-danger @else border-success @endif">

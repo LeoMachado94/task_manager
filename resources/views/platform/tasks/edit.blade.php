@@ -73,7 +73,7 @@
                                                 @enderror
                                             </div>
                                             <div class="col-12 form-group text-right">
-                                                <button type="submit" class="btn btn-primary mr-1">Cadastrar</button>
+                                                <button type="submit" class="btn btn-primary mr-1">Salvar</button>
                                                 <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                                             </div>
                                         </div>
